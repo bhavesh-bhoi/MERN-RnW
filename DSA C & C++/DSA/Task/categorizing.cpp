@@ -195,12 +195,12 @@ int main()
 
         // Exit
         case 5:
-            cout << "Exiting program. Goodbye!\n";
+            cout << "Exiting program. Happy Programming! Goodbye!\n";
             break;
 
         // Invalid choice
         default:
-            cout << "Invalid choice. Please try again.\n";
+            cout << "Invalid choice.\n";
         }
     } while (choice != 5);
 
