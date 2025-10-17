@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="quiz-container">
+        <h1>JS Quiz</h1>
+        <div id="question-container">
+            <p id="question"></p>
+            <div id="option-container">
+                <button class="option-btn" id="option1" title="btn"></button>
+                <button class="option-btn" id="option2" title="btn"></button>
+                <button class="option-btn" id="option3" title="btn"></button>
+                <button class="option-btn" id="option4" title="btn"></button>
+            </div>
+        </div>
+        <button id="next-btn">Next</button>
+        <div id="score-container">
+            <h2>Your Score : <span id="score"></span></h2>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="quiz-container">
+      <h1>JS Quiz</h1>
+      <div id="question-container">
+        <p id="question"></p>
+        <div id="option-container">
+          <button class="option-btn" id="option1"></button>
+          <button class="option-btn" id="option2"></button>
+          <button class="option-btn" id="option3"></button>
+          <button class="option-btn" id="option4"></button>
+        </div>
+      </div>
+      <button id="next-btn">Next</button>
+      <div id="score-container">
+        <h2>Your Score : <span id="score"></span></h2>
+      </div>
+    </div>
+    <script>
+      const quizData = [
+        {
+          question: "who is owner of rnw",
+          options: ["heet", "hitesh", "hasmukh", "parth"],
+          correct: 1,
+        },
+        {
+          question: "who is the best cricket captian",
+          options: ["heet", "hitesh", "hasmukh", "parth"],
+          correct: 1,
+        },
+      ];
+      let currentQuestionIndex = 0;
+      let score = 0;
+
+      const questionEl = document.getElementById("question");
+      const optionEl = document.querySelectorAll(".option-btn");
+      const nextbtn = document.getElementById("next-btn");
+      const scoreContainer = document.getElementById("score-container");
+      const scoreEl = document.getElementById("score");
+      const quizContainer = document.getElementById("quiz-container");
+      function loadQuestions() {
+        const currentQuestion = quizData[currentQuestionIndex];
+        questionEl.textContent = currentQuestion.question;
+
+        optionEl.forEach((btn, index) => {
+          btn.textContent = currentQuestion.options[index];
+          btn.className = "option-btn";
+          btn.disable = false;
+          btn.onclick = () => checkAnswer(btn, index);
+        });
+        nextbtn.style.display = "none";
+      }
+      function checkAnswer(selectedBtn, selectedIndex) {
+        const correctIndex = quizData[currentQuestionIndex].correct;
+        if (selectedIndex === correctIndex) {
+          selectedBtn.classList.add("correct");
+          score++;
+        } else {
+          selectedBtn.classList.add("wrong");
+          optionEl[correctIndex].classList.add("correct");
+        }
+        optionEl.forEach((btn) => (btn.disable = true));
+        nextbtn.style.display = "inline-block";
+      }
+      nextbtn.addEventListener("click", () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+          loadQuestions();
+        } else {
+          showScore();
+        }
+      });
+      function showScore() {
+        quizContainer.innerHTML = `<h1> Quiz Completed!</h1>
+            <h2>Your Score: ${score}/${quizData.length}</h2>
+            <button onclick="location.reload()">Restart Quiz</button>`;
+      }
+      loadQuestions();
+    </script>
+  </body>
+</html> -->
