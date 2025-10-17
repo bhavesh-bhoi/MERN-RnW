@@ -7,13 +7,19 @@ struct Node
     Node *left;
     Node *right;
 
-    Node(int value) : data(value), left(nullptr), right(nullptr) {}
+    Node(int value)
+    {
+        data = value;
+        left = right = nullptr;
+    }
 };
 
 void inOrderTraversal(Node *root)
 {
-    if (!root)
+    if (root == nullptr)
+    {
         return;
+    }
     inOrderTraversal(root->left);
     cout << root->data << " ";
     inOrderTraversal(root->right);
@@ -21,8 +27,10 @@ void inOrderTraversal(Node *root)
 
 void preOrderTraversal(Node *root)
 {
-    if (!root)
+    if (root == nullptr)
+    {
         return;
+    }
     cout << root->data << " ";
     preOrderTraversal(root->left);
     preOrderTraversal(root->right);
@@ -30,8 +38,10 @@ void preOrderTraversal(Node *root)
 
 void postOrderTraversal(Node *root)
 {
-    if (!root)
+    if (root == nullptr)
+    {
         return;
+    }
     postOrderTraversal(root->left);
     postOrderTraversal(root->right);
     cout << root->data << " ";
