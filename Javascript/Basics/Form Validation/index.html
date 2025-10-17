@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Form Validation</title>
+    <style>
+      .error {
+        border-color: red;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" onsubmit="return validForm()">
+      <label for="name">Enter Name : </label>
+      <input type="text" name="name" id="name" required />
+      <br />
+      <br />
+      <label for="email">Enter E-mail : </label>
+      <input type="email" name="email" id="email" required />
+      <br />
+      <br />
+      <label for="age">Enter Age : </label>
+      <input type="number" name="age" id="age" required />
+      <br />
+      <br />
+      <input type="submit" value="Submit Form" />
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
