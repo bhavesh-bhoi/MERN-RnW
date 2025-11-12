@@ -1,11 +1,3 @@
-// Comparison operations
-
-console.log("Not equal:", a != b);
-console.log("Greater than:", a > b);
-console.log("Less than:", a < b);
-console.log("Greater than or equal to:", a >= b);
-console.log("Less than or equal to:", a <= b);
-
 
 // Logical operations
 

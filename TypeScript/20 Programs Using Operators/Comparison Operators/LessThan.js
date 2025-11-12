@@ -1,0 +1,2 @@
+var a = 10, b = 3;
+console.log("Less than:", a < b);
