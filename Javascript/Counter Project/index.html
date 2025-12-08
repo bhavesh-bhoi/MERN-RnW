@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flip Countdown</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="countdown-wrapper">
+      <div class="countdown-header">
+        <div>
+          <div class="countdown-title">
+            <span>Countdown</span>
+            <span class="pill">
+              <span class="pill-dot"></span>
+              Live
+            </span>
+          </div>
+        </div>
+        <div class="countdown-subtitle">
+          Target:
+          <span class="target-time">2025-12-09 14:02:00</span>
+        </div>
+      </div>
+
+      <div class="countdown" id="countdown">
+        <div class="time-segment" data-unit="days">
+          <div class="segment-label">Days</div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <span class="number" data-current>00</span>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="number" data-next>00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="time-segment" data-unit="hours">
+          <div class="segment-label">Hours</div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <span class="number" data-current>00</span>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="number" data-next>00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="time-segment" data-unit="minutes">
+          <div class="segment-label">Minutes</div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <span class="number" data-current>00</span>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="number" data-next>00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="time-segment" data-unit="seconds">
+          <div class="segment-label">Seconds</div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <span class="number" data-current>00</span>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="number" data-next>00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="time-up-message">TIME UP!!</div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

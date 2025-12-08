@@ -1,0 +1,215 @@
+:root {
+    --bg: #050816;
+    --card-bg: rgba(15, 23, 42, 0.85);
+    --card-border: rgba(148, 163, 184, 0.3);
+    --accent: #38bdf8;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+    --radius-xl: 1.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top left,
+            #1e293b,
+            transparent 55%),
+        radial-gradient(circle at bottom right, #0f172a, #020617);
+    color: var(--text-main);
+    padding: 1.5rem;
+}
+
+.countdown-wrapper {
+    width: 100%;
+    max-width: 720px;
+    background: linear-gradient(135deg,
+            rgba(148, 163, 184, 0.12),
+            rgba(15, 23, 42, 0.96));
+    border-radius: 1.75rem;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    padding: 1.75rem 1.75rem 2.25rem;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(24px);
+}
+
+.countdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.countdown-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-muted);
+}
+
+.pill {
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: radial-gradient(circle, #22c55e, #15803d);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+}
+
+.countdown-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+.target-time {
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 600px) {
+    .countdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.time-segment {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+    text-align: center;
+    perspective: 1000px;
+}
+
+.segment-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+}
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 120px;
+    margin: 0 auto;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--card-border);
+    background: radial-gradient(circle at top left, #1f2937, #020617);
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.9);
+    overflow: hidden;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+}
+
+.flip-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--text-main);
+}
+
+.flip-face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border-top: 1px solid rgba(248, 250, 252, 0.12);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.7);
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.flip-front {
+    transform: rotateX(0deg);
+}
+
+.flip-back {
+    transform: rotateX(180deg);
+}
+
+/* Flip animation */
+.time-segment.flip .flip-card-inner {
+    animation: flip-card 0.65s ease-in-out forwards;
+}
+
+@keyframes flip-card {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(-90deg);
+    }
+
+    100% {
+        transform: rotateX(-180deg);
+    }
+}
+
+/* “TIME UP” state */
+#time-up-message {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #f97373;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#time-up-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
