@@ -1,3 +1,4 @@
+// API
 const questions = [
   {
     question: "Who is the PM of India?",
@@ -16,7 +17,7 @@ let score = 0;
 let timeleft = 30;
 let timer;
 
-// ✅ store selected answers
+// store selected answers
 const userAnswers = new Array(questions.length).fill(null);
 
 const questionE1 = document.getElementById("question");
@@ -27,6 +28,7 @@ const resultE1 = document.getElementById("result");
 const timeE1 = document.getElementById("time");
 const quizContainer = document.getElementById("quizContainer");
 
+// Timer
 function startTimer() {
   timer = setInterval(() => {
     timeleft--;
@@ -35,6 +37,7 @@ function startTimer() {
   }, 1000);
 }
 
+// questions along with options
 function showQuestion() {
   let q = questions[index];
   questionE1.innerText = q.question;
@@ -64,6 +67,7 @@ function showQuestion() {
   nextbtn.innerText = index === questions.length - 1 ? "Finish" : "Next";
 }
 
+// Next Button
 nextbtn.onclick = () => {
   if (userAnswers[index] === questions[index].answer) score++;
 
@@ -75,6 +79,7 @@ nextbtn.onclick = () => {
   }
 };
 
+// Previous Button
 prevbtn.onclick = () => {
   if (index > 0) {
     index--;
@@ -82,6 +87,7 @@ prevbtn.onclick = () => {
   }
 };
 
+// Result
 function endQuiz() {
   clearInterval(timer);
   quizContainer.style.display = "none";
