@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Operations with JSON using LocalStorage</title>
+  </head>
+  <body>
+    <h2>Manage Students</h2>
+    <hr />
+    <input type="text" name="name" id="name" title="name" />
+    <input type="number" name="age" id="age" title="age" />
+    <button onclick="addStudent()">Add</button>
+    <br />
+    <br />
+    <hr />
+    <br />
+    <h2>Students List</h2>
+    <table id="studentsTable">
+      <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+    </table>
+
+    <script>
+      function getStudents() {
+        return JSON.parse(localStorage.getItem("students")) || [];
+      }
+
+      function addStudent() {
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+
+        if (name === "" || age === "") {
+          alert("Please Enter Name & Email!");
+          return;
+        }
+
+        let students = getStudents();
+        students.push({ name, age });
+
+        localStorage.setItem("students", JSON.stringify(students));
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+
+        alert("Student Added!");
+        loadTable();
+      }
+
+      function loadTable() {
+        const table = document.getElementById("studentsTable");
+        const students = getStudents();
+
+        table.innerHTML = `
+          <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+        </tr>`;
+
+        students.forEach((stu, i) => {
+          table.innerHTML += `
+          <tr>
+            <td>${i}</td>
+            <td>${stu.name}</td>
+            <td>${stu.age}</td>
+            <td>
+              <button onClick="editStudent(${i})">Edit</button>
+              <button onClick="deleteStudent(${i})">Delete</button>
+            </td>
+          </tr>`;
+        });
+      }
+
+      function deleteStudent(i) {
+        let students = getStudents();
+        students.splice(i, 1);
+        localStorage.setItem("students", JSON.stringify(students));
+        loadTable();
+      }
+
+      function editStudent(i) {
+        let students = getStudents();
+        const newName = prompt("Enter New Name : ", students[i].name);
+        const newAge = prompt("Enter New Age : ", students[i].age);
+
+        if (newName !== null && newAge !== null) {
+          students[i].name = newName;
+          students[i].age = newAge;
+
+          localStorage.setItem("students", JSON.stringify(students));
+          loadTable();
+        }
+      }
+      loadTable();
+    </script>
+  </body>
+</html>

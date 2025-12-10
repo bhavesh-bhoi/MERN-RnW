@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            margin: 5px;
+            padding: 7px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="saveSimple()">Save Simple JSON</button>
+    <button onclick="viewSimple()">View JSON</button>
+    <button onclick="deleteSimple()">Delete JSON</button>
+    <hr>
+    <h3>Add Student</h3>
+    <input type="text" name="" id="name" placeholder="Enter the name ">
+    <input type="number" name="" id="age" placeholder="Enter the Age">
+    <button onclick="addStudnet()">Add</button>
+
+    <h3>Student List</h3>
+    <table id="studentTable">
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+    </table>
+    <script>
+        function saveSimple() {
+            const obj = {
+                name: "Bhavesh",
+                age: 22
+            }
+            localStorage.setItem("simpleData", JSON.stringify(obj))
+            alert("Simple JSON Saved!")
+        }
+        function viewSimple() {
+            const data = JSON.parse(localStorage.getItem("simpleData"))
+            console.log(data);
+            alert("Check Log to view Data")
+        }
+        function deleteSimple() {
+            localStorage.removeItem("simpleData")
+            alert("Simpe JSON Deleted!")
+        }
+
+        function getStudents() {
+            return JSON.parse(localStorage.getItem("students")) || []
+        }
+
+        function addStudnet() {
+            const name = document.getElementById("name").value
+            const age = document.getElementById("age").value
+            if (name === "" || age === "") {
+                alert("plz enter all values ")
+                return
+            }
+            let students = getStudents()
+            students.push({ name, age })
+
+            localStorage.setItem("students", JSON.stringify(students))
+            document.getElementById("name").value = ""
+            document.getElementById("age").value = ""
+
+            alert("Student Added !")
+            loadTable()
+        }
+        function loadTable() {
+            const table = document.getElementById("studentTable")
+            const students = getStudents()
+
+            table.innerHTML = `
+            <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>`;
+            students.forEach((stu, index) => {
+                table.innerHTML += `
+                <tr>
+                    <td>${index}</td>
+                    <td>${stu.name}</td>
+                    <td>${stu.age}</td>
+                    <td>
+                        <button onclick="editStudent(${index})">Edit</button>
+                        <button onclick="deleteStudent(${index})">Delete</button>
+                    </td>
+                </tr>    
+            `})
+        }
+        function deleteStudent(index) {
+            let students = getStudents()
+            students.splice(index, 1)
+            localStorage.setItem("students", JSON.stringify(students))
+            loadTable()
+        }
+        function editStudent(index) {
+            let students = getStudents()
+            const newName = prompt("Enter New Name", students[index].name)
+            const newAge = prompt("Enter New Age", students[index].age)
+
+            if (newName !== null && newAge !== null) {
+                students[index].name = newName
+                students[index].age = newAge
+
+                localStorage.setItem("students", JSON.stringify(students))
+                loadTable()
+            }
+        }
+        loadTable()
+
+    </script>
+</body>
+
+</html>
