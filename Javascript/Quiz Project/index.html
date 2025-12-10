@@ -3,38 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Game</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <div class="quiz-shell">
-      <div class="quiz-header">
-        <h2>Quiz Game</h2>
-        <div class="pill-muted">
-          <span class="pill-dot"></span>
-          <span>Single Choice</span>
-        </div>
-      </div>
+      <h2>Quiz Application</h2>
 
-      <div id="timer">
-        <span class="timer-dot"></span>
-        Time Left:
-        <span id="time"></span>s
-      </div>
+      <div id="timer">Time Left: <span id="time"></span>s</div>
 
       <div id="quizContainer">
-        <div class="question-box">
-          <div class="question-meta">Question</div>
-          <h3 id="question"></h3>
-          <div id="options"></div>
+        <h3 id="question"></h3>
+        <div id="options"></div>
+
+        <div class="controls">
+          <button id="prev-btn" class="btn btn-prev">Previous</button>
+          <button id="next-btn" class="btn btn-next">Next</button>
         </div>
-        <button id="next-btn" class="btn">
-          Next
-        </button>
       </div>
 
-      <div id="result" class="result"></div>
+      <div id="result" style="display: none"></div>
     </div>
 
     <script src="script.js"></script>
