@@ -4,99 +4,88 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CRUD Operations with JSON using LocalStorage</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <h2>Manage Students</h2>
-    <hr />
-    <input type="text" name="name" id="name" title="name" />
-    <input type="number" name="age" id="age" title="age" />
-    <button onclick="addStudent()">Add</button>
-    <br />
-    <br />
-    <hr />
-    <br />
-    <h2>Students List</h2>
-    <table id="studentsTable">
-      <tr>
-        <th>Index</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Action</th>
-      </tr>
-    </table>
+    <div class="app-shell">
+      <div class="app-header">
+        <h2>Manage Students</h2>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          LocalStorage · JSON
+        </div>
+      </div>
 
-    <script>
-      function getStudents() {
-        return JSON.parse(localStorage.getItem("students")) || [];
-      }
+      <hr />
 
-      function addStudent() {
-        const name = document.getElementById("name").value;
-        const age = document.getElementById("age").value;
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            title="name"
+            placeholder="Enter student name"
+          />
+        </div>
 
-        if (name === "" || age === "") {
-          alert("Please Enter Name & Email!");
-          return;
-        }
+        <div class="field">
+          <label for="age">Age</label>
+          <input
+            type="number"
+            name="age"
+            id="age"
+            title="age"
+            placeholder="Enter age"
+          />
+        </div>
 
-        let students = getStudents();
-        students.push({ name, age });
+        <button onclick="addStudent()" class="btn-primary">Add</button>
+      </div>
 
-        localStorage.setItem("students", JSON.stringify(students));
-        document.getElementById("name").value = "";
-        document.getElementById("age").value = "";
+      <div class="section-title">Students List</div>
 
-        alert("Student Added!");
-        loadTable();
-      }
+      <table id="studentsTable">
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Action</th>
+        </tr>
+      </table>
+    </div>
 
-      function loadTable() {
-        const table = document.getElementById("studentsTable");
-        const students = getStudents();
+    <!-- Edit Modal -->
+    <div class="modal-backdrop" id="editModalBackdrop">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-title">Edit Student</div>
+          <button class="modal-close" onclick="closeEditModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="field">
+            <label for="editName">Name</label>
+            <input type="text" id="editName" placeholder="Enter new name" />
+          </div>
+          <div class="field">
+            <label for="editAge">Age</label>
+            <input type="number" id="editAge" placeholder="Enter new age" />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-outline" onclick="closeEditModal()">Cancel</button>
+          <button class="btn-success" onclick="saveEdit()">Save</button>
+        </div>
+      </div>
+    </div>
 
-        table.innerHTML = `
-          <tr>
-        <th>Index</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Action</th>
-        </tr>`;
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
 
-        students.forEach((stu, i) => {
-          table.innerHTML += `
-          <tr>
-            <td>${i}</td>
-            <td>${stu.name}</td>
-            <td>${stu.age}</td>
-            <td>
-              <button onClick="editStudent(${i})">Edit</button>
-              <button onClick="deleteStudent(${i})">Delete</button>
-            </td>
-          </tr>`;
-        });
-      }
-
-      function deleteStudent(i) {
-        let students = getStudents();
-        students.splice(i, 1);
-        localStorage.setItem("students", JSON.stringify(students));
-        loadTable();
-      }
-
-      function editStudent(i) {
-        let students = getStudents();
-        const newName = prompt("Enter New Name : ", students[i].name);
-        const newAge = prompt("Enter New Age : ", students[i].age);
-
-        if (newName !== null && newAge !== null) {
-          students[i].name = newName;
-          students[i].age = newAge;
-
-          localStorage.setItem("students", JSON.stringify(students));
-          loadTable();
-        }
-      }
-      loadTable();
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
