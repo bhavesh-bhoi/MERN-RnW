@@ -1,55 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login-Register System</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login · Register</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div id="login-form">
-      <input
-        type="text"
-        name=""
-        id="username"
-        placeholder="UserName"
-        required
-      />
-      <br />
-      <input
-        type="password"
-        name=""
-        id="password"
-        placeholder="password"
-        required
-      />
-      <br />
-      <button onclick="loginUser()">Login</button>
-      <p id="error-message" style="color: red; display: none">
-        Invalid Id OR password
-      </p>
-    </div>
 
-    <div id="register-form">
-      <h3>Not a user?Register</h3>
-      <input
-        type="text"
-        name=""
-        id="reg-username"
-        placeholder="UserName"
-        required
-      /><br />
-      <input
-        type="password"
-        name=""
-        id="reg-password"
-        placeholder="password"
-        required
-      /><br />
-      <button onclick="registerUser()">Register</button>
-    </div>
-    <div id="welcome-message" style="display: none">
-      <h3>Welcome <span id="user-name"></span></h3>
-      <button onclick="logoutUser()">LogOut</button>
+  <body>
+    <div class="page">
+      <div class="container">
+        <!-- Login card -->
+        <section class="card" id="login-card">
+          <div class="brand">
+            <div class="logo">LR</div>
+            <div>
+              <div class="title">Login</div>
+              <div class="subtitle">Access your account</div>
+            </div>
+          </div>
+
+          <div id="login-form">
+            <form onsubmit="event.preventDefault(); loginUser();">
+              <div class="field">
+                <label for="username">UserName</label>
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="UserName"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+
+              <div class="row">
+                <button type="submit" class="btn">Login</button>
+                <button
+                  type="button"
+                  class="btn ghost"
+                  onclick="document.getElementById('reg-username').focus()"
+                >
+                  Need account?
+                </button>
+              </div>
+
+              <p id="error-message">Invalid Id OR password</p>
+            </form>
+          </div>
+        </section>
+
+        <!-- Register / Welcome card -->
+        <section class="card" id="register-card">
+          <div class="brand">
+            <div
+              class="logo"
+              style="background: linear-gradient(135deg, #22c55e, #15803d)"
+            >
+              RG
+            </div>
+            <div>
+              <div class="title">Register</div>
+              <div class="subtitle">Create new user</div>
+            </div>
+          </div>
+
+          <div id="register-form">
+            <form onsubmit="event.preventDefault(); registerUser();">
+              <div class="field">
+                <label for="reg-username">UserName</label>
+                <input
+                  type="text"
+                  id="reg-username"
+                  placeholder="UserName"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="reg-password">Password</label>
+                <input
+                  type="password"
+                  id="reg-password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+
+              <div class="row">
+                <button
+                  type="submit"
+                  class="btn"
+                  style="background: linear-gradient(90deg, #22c55e, #16a34a)"
+                >
+                  Register
+                </button>
+                <button
+                  type="button"
+                  class="btn ghost"
+                  onclick="document.getElementById('username').focus()"
+                >
+                  Have account?
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div id="welcome-message" style="display: none; margin-top: 14px">
+            <div class="welcome">
+              <h3>Welcome <span id="user-name" class="user"></span></h3>
+              <div class="row" style="width: 100%; justify-content: flex-start">
+                <button class="btn ghost" onclick="logoutUser()">LogOut</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script src="script.js"></script>

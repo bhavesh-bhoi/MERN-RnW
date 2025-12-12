@@ -1,0 +1,209 @@
+:root {
+    --bg: #071023;
+    --card: #061127;
+    --muted: #98a0b3;
+    --accent: #38bdf8;
+    --glass: rgba(255, 255, 255, 0.03);
+    --success: #16a34a;
+    --danger: #ef4444;
+    --radius: 14px;
+    --shadow: 0 12px 40px rgba(2, 6, 23, 0.7);
+    --glass-border: rgba(148, 163, 184, 0.12);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    background: radial-gradient(1200px 600px at 10% 10%,
+            rgba(56, 189, 248, 0.06),
+            transparent 10%),
+        radial-gradient(800px 400px at 90% 90%,
+            rgba(34, 197, 94, 0.03),
+            transparent 10%),
+        var(--bg);
+    color: #e6eef8;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+}
+
+.container {
+    width: 100%;
+    max-width: 940px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.card {
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.02),
+            rgba(255, 255, 255, 0.01));
+    border-radius: var(--radius);
+    padding: 22px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(6px);
+}
+
+/* Header */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #022633;
+    box-shadow: 0 8px 24px rgba(3, 7, 18, 0.6);
+}
+
+.title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.subtitle {
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+/* forms layout */
+form {
+    display: block;
+    margin-top: 6px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+label {
+    font-size: 0.74rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.06);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.01),
+            rgba(255, 255, 255, 0));
+    color: #eaf4ff;
+    outline: none;
+    font-size: 0.95rem;
+    box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.01);
+}
+
+input::placeholder {
+    color: rgba(230, 240, 255, 0.25);
+}
+
+input:focus {
+    border-color: rgba(56, 189, 248, 0.8);
+    box-shadow: 0 6px 18px rgba(2, 12, 23, 0.6);
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    background: linear-gradient(90deg, var(--accent), #0ea5e9);
+    color: #03212a;
+    box-shadow: 0 12px 30px rgba(3, 6, 12, 0.6);
+}
+
+.btn.ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid rgba(148, 163, 184, 0.06);
+    font-weight: 600;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+#error-message {
+    margin-top: 8px;
+    color: var(--danger);
+    font-weight: 600;
+    display: none;
+}
+
+/* Welcome */
+.welcome {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.welcome h3 {
+    font-size: 1.15rem;
+}
+
+.welcome .user {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Responsive: on small screens stack */
+@media (max-width: 880px) {
+    .container {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+    }
+}
+
+/* Keep forms visually similar to original: place register below login on smaller screens */
+@media (max-width: 420px) {
+    .card {
+        padding: 16px;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+}
