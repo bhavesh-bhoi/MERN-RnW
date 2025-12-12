@@ -1,0 +1,29 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    width: 230px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card img {
+    height: 200px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 16px;
+    color: green;
+}

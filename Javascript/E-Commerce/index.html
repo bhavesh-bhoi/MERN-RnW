@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Minimal style so cart items look readable — you can keep your style.css as is */
+      .grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+      .card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 6px;
+        background: #fafafa;
+      }
+      .card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 8px;
+      }
+      #cart {
+        margin-top: 20px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: #fff;
+      }
+      #cartItems {
+        margin-top: 12px;
+        display: flex;
+        /* flex-direction: column; */
+        gap: 8px;
+      }
+      .cart-item {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        border: 1px solid #eee;
+        padding: 8px;
+        border-radius: 6px;
+      }
+      .cart-item img {
+        width: 80px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      .cart-info {
+        flex: 1;
+      }
+      .cartItemCard {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 6px;
+        background: #fafafa;
+        display: flex;
+        flex-direction: column;
+        width: 220px;
+      }
+
+      .cartItemCard img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 8px;
+      }
+
+      .cartItemCard button {
+        margin-top: 8px;
+        padding: 5px 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Add Product</h2>
+    <div id="error"></div>
+
+    <form id="productForm">
+      <input type="text" id="name" placeholder="Product Name" /><br /><br />
+      <input type="number" id="price" placeholder="Price" /><br /><br />
+      <input type="text" id="category" placeholder="Category" /><br /><br />
+      <input type="file" title="Image" id="image" /><br /><br />
+      <textarea id="description" placeholder="Description"></textarea
+      ><br /><br />
+      <button type="submit">Add Product</button>
+    </form>
+
+    <hr />
+
+    <div id="productGrid" class="grid"></div>
+
+    <hr />
+    <div id="cart">
+      <strong>CART</strong>
+      <div style="margin-top: 8px">
+        Total Products: <span id="totalProducts">0</span> | Total Price: ₹
+        <span id="totalPrice">0</span>
+      </div>
+
+      <div id="cartItems"></div>
+    </div>
+
+    <script>
+      const form = document.getElementById("productForm");
+      const grid = document.getElementById("productGrid");
+      const error = document.getElementById("error");
+      const cartBox = document.getElementById("cart");
+      const cartItemsDiv = document.getElementById("cartItems");
+      const totalProductsEl = document.getElementById("totalProducts");
+      const totalPriceEl = document.getElementById("totalPrice");
+
+      let products = JSON.parse(sessionStorage.getItem("products")) || [];
+      let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+      displayProducts();
+      updateCart();
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const price = document.getElementById("price").value.trim();
+        const category = document.getElementById("category").value.trim();
+        const description = document.getElementById("description").value.trim();
+        const imgFile = document.getElementById("image").files[0];
+
+        if (!name) return showError("Product name is required");
+        if (!price || isNaN(price)) return showError("Price must be a number");
+        if (description.length < 10)
+          return showError("Description must be at least 10 characters");
+        if (!imgFile) return showError("Please upload an image");
+
+        const imageURL = URL.createObjectURL(imgFile);
+
+        const product = {
+          name,
+          price,
+          category,
+          description,
+          image: imageURL,
+          qty: 1,
+        };
+
+        products.push(product);
+        sessionStorage.setItem("products", JSON.stringify(products));
+
+        displayProducts();
+        form.reset();
+        error.innerHTML = "";
+      });
+
+      function showError(msg) {
+        error.innerHTML = msg;
+        error.style.color = 'red'
+      }
+
+      function displayProducts() {
+        grid.innerHTML = "";
+
+        products.forEach((p, index) => {
+          const card = `
+        <div class="card">
+            <img src="${p.image}">
+            <div class="name">${p.name}</div>
+            <div class="price">₹ ${p.price}</div>
+            <p>${p.category}</p>
+            <p>${p.description}</p>
+
+            <button onclick="decreaseQty(${index})">-</button>
+            <label id="qty-${index}">${p.qty}</label>
+            <button onclick="increaseQty(${index})">+</button>
+
+            <br><br>
+
+            <button onclick="addToCart(${index})">Add To Cart</button>
+        </div>
+      `;
+          grid.innerHTML += card;
+        });
+      }
+
+      // SIMPLE QUANTITY LOGIC
+      function increaseQty(i) {
+        products[i].qty++;
+        sessionStorage.setItem("products", JSON.stringify(products));
+        document.getElementById("qty-" + i).innerText = products[i].qty;
+      }
+
+      function decreaseQty(i) {
+        if (products[i].qty > 1) {
+          products[i].qty--;
+          sessionStorage.setItem("products", JSON.stringify(products));
+          document.getElementById("qty-" + i).innerText = products[i].qty;
+        }
+      }
+
+      // SIMPLE CART
+      function addToCart(i) {
+        const product = products[i];
+
+        cart.push({
+          name: product.name,
+          price: product.price,
+          qty: product.qty,
+          image: product.image,
+          description: product.description,
+        });
+
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        updateCart();
+      }
+
+      function updateCart() {
+        const cartCount = cart.length;
+        cartBox.querySelector("strong").innerText = `CART (${cartCount})`;
+        renderCart();
+      }
+
+      // Render cart items and totals using your simple logic
+      function renderCart() {
+        cartItemsDiv.innerHTML = "";
+
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = "<div>No items in cart.</div>";
+          totalProductsEl.innerText = 0;
+          totalPriceEl.innerText = 0;
+          return;
+        }
+
+        let totalProducts = 0;
+        let totalPrice = 0;
+
+        cart.forEach((it, idx) => {
+          totalProducts += Number(it.qty || 1);
+          totalPrice += Number(it.price) * Number(it.qty || 1);
+
+          const itemHTML = document.createElement("div");
+          itemHTML.className = "cart-item";
+          itemHTML.innerHTML = `
+  <div class="cartItemCard">
+    <img src="${it.image}">
+    <div class="name">${it.name}</div>
+    <div class="price">₹ ${it.price} x ${it.qty}</div>
+    <p style="font-size:12px; color:#555;">${it.description}</p>
+    <button onclick="cancelCartItem(${idx})">Cancel</button>
+  </div>
+`;
+
+          cartItemsDiv.appendChild(itemHTML);
+        });
+
+        totalProductsEl.innerText = totalProducts;
+        totalPriceEl.innerText = totalPrice;
+      }
+
+      // Cancel/remove a specific cart item
+      function cancelCartItem(i) {
+        cart.splice(i, 1);
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        updateCart();
+      }
+    </script>
+  </body>
+</html>
