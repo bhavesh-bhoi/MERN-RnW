@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Login System</h2>
+    <div id="login-form">
+        <input type="text" name="" id="username" placeholder="UserName" required>
+        <br>
+        <input type="password" name="" id="password" placeholder="password" required>
+        <br>
+        <button onclick="login()">Login</button>
+        <p id="error-message" style="color: red; display: none;">Invalid Id OR password</p>
+    </div>
+
+    <div id="register-form">
+        <h3>Not a user?Register</h3>
+        <input type="text" name="" id="reg-username" placeholder="UserName" required><br>
+        <input type="password" name="" id="reg-password" placeholder="password" required><br>
+        <button onclick="register()">Register</button>
+    </div>
+    <div id="welcome-message" style="display: none;">
+        <h3>Welcome <span id="user-name"></span></h3>
+        <button onclick="logout()">LogOut</button>
+    </div>
+
+    <script>
+        const userDB = JSON.parse(localStorage.getItem("users")) || []
+
+        function register() {
+            const username = document.getElementById("reg-username").value
+            const password = document.getElementById("reg-password").value
+            if (username && password) {
+                if (userDB.some(user => user.username === username)) {
+                    alert("User Alreday taken ")
+                }
+                else {
+                    userDB.push({ username, password })
+                    localStorage.setItem("users", JSON.stringify(userDB))
+                    alert("Register completed")
+                    document.getElementById("reg-username").value = ""
+                    document.getElementById("reg-password").value = ""
+                }
+            }
+            else {
+                alert("plz enter the data")
+            }
+        }
+
+        function login() {
+            const username = document.getElementById("username").value
+            const password = document.getElementById("password").value
+            const errorMessage = document.getElementById("error-message")
+
+            const user = userDB.find(user => user.username === username && user.password === password)
+
+            if (user) {
+                document.getElementById("login-form").style.display = 'none'
+                document.getElementById("register-form").style.display = 'none'
+                document.getElementById("welcome-message").style.display = 'block'
+                document.getElementById("user-name").innerText = user.username
+                errorMessage.style.display = 'none'
+
+                localStorage.setItem("loggedInUser", JSON.stringify(user))
+
+            }
+            else {
+                errorMessage.style.display = 'block'
+
+            }
+        }
+        function logout() {
+            localStorage.removeItem("loggedInUser")
+
+            document.getElementById("login-form").style.display = 'block'
+            document.getElementById("register-form").style.display = 'block'
+            document.getElementById("welcome-message").style.display = 'none'
+        }
+
+        function checkLoggedIn() {
+            const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
+
+            if (loggedInUser) {
+                document.getElementById("login-form").style.display = 'none'
+                document.getElementById("register-form").style.display = 'none'
+                document.getElementById("welcome-message").style.display = 'block'
+                document.getElementById("user-name").innerText = loggedInUser.username
+            }
+        }
+
+        checkLoggedIn()
+    </script>
+</body>
+
+</html>

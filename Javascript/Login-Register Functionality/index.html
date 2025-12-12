@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login-Register System</title>
+  </head>
+  <body>
+    <div id="login-form">
+      <input
+        type="text"
+        name=""
+        id="username"
+        placeholder="UserName"
+        required
+      />
+      <br />
+      <input
+        type="password"
+        name=""
+        id="password"
+        placeholder="password"
+        required
+      />
+      <br />
+      <button onclick="loginUser()">Login</button>
+      <p id="error-message" style="color: red; display: none">
+        Invalid Id OR password
+      </p>
+    </div>
+
+    <div id="register-form">
+      <h3>Not a user?Register</h3>
+      <input
+        type="text"
+        name=""
+        id="reg-username"
+        placeholder="UserName"
+        required
+      /><br />
+      <input
+        type="password"
+        name=""
+        id="reg-password"
+        placeholder="password"
+        required
+      /><br />
+      <button onclick="registerUser()">Register</button>
+    </div>
+    <div id="welcome-message" style="display: none">
+      <h3>Welcome <span id="user-name"></span></h3>
+      <button onclick="logoutUser()">LogOut</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
