@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="countdown" style="font-size: 22px;font-weight: bold;"></div>
+    <script>
+        const targetDate=new Date("2025-12-09T14:02:00").getTime()
+
+        let timer=setInterval(()=>{
+            let now=new Date().getTime()
+            let distance =targetDate-now
+
+            if(distance<0){
+                clearInterval(timer)
+                document.getElementById("countdown").innerHTML="TIME UP!!"
+                return
+            }
+
+            let days=Math.floor(distance/(1000*60*60*24))
+            let hours=Math.floor(distance%(1000*60*60*24)/(1000*60*60))
+            let minutes=Math.floor(distance%(1000*60*60)/(1000*60))
+            let seconds=Math.floor(distance%(1000*60)/1000)
+
+            document.getElementById("countdown").innerHTML=
+            days+"d"+
+            hours+"h"+
+            minutes+"m"+
+            seconds+"s"
+
+        },1000)
+    </script>
+</body>
+</html>
