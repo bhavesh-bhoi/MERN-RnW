@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMS</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="login" id="login">
+      <h1>Login Page</h1>
+
+      <form id="loginForm">
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Username"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter Password"
+          required
+        />
+        <select id="roles" required>
+          <option value="">-- Select Role --</option>
+          <option value="Admin">Admin</option>
+          <option value="Student">Student</option>
+        </select>
+        <button type="submit">Login</button>
+      </form>
+
+      <p id="loginError"></p>
+    </div>
+
+    <div class="register" id="register">
+      <h1>Register Page</h1>
+
+      <form id="registerForm">
+        <input
+          type="text"
+          id="reg-username"
+          placeholder="Enter Username"
+          required
+        />
+        <input
+          type="password"
+          id="reg-password"
+          placeholder="Enter Password"
+          required
+        />
+        <select id="reg-roles" required>
+          <option value="">-- Select Role --</option>
+          <option value="Admin">Admin</option>
+          <option value="Student">Student</option>
+        </select>
+        <button type="submit">Register</button>
+      </form>
+
+      <p id="error" style="color: red"></p>
+    </div>
+
+    <div class="studentsData" id="studentsData" style="display: none">
+      <button onclick="logOutStudent()">Log Out</button>
+    </div>
+
+    <div class="adminsData" id="adminsData" style="display: none">
+      <div class="subjectForm">
+        <form action="" id="subjectsForm">
+          <input
+            type="text"
+            id="subjectCode"
+            placeholder="Enter Subject Code"
+          />
+          <input
+            type="text"
+            id="subjectName"
+            placeholder="Enter Subject Name"
+          />
+          <button type="button" onclick="addSubject()">Add</button>
+          <button type="button" onclick="updateSubject()">Update</button>
+          <p id="message" style="display: none"></p>
+        </form>
+      </div>
+
+      <button onclick="logOutAdmin()">Log Out</button>
+
+      <div class="displaySubjects"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
