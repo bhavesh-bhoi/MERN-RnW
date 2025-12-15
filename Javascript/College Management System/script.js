@@ -192,9 +192,9 @@ function displaySubjects() {
     }
     subjects.forEach((sub, index) => {
       studentContainer.innerHTML += (
-        <p>
+        `<p>
           ${index + 1}. ${sub.subCode} - ${sub.subName}
-        </p>
+        </p>`
       );
     });
   }
