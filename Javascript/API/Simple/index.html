@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Structure</title>
+  </head>
+  <body>
+    <script>
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>
