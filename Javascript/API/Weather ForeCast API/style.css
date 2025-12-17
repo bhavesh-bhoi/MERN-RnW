@@ -1,0 +1,146 @@
+:root {
+    --bg: #020617;
+    --card-bg: rgba(15, 23, 42, 0.85);
+    --card-border: rgba(148, 163, 184, 0.35);
+    --accent: #38bdf8;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --danger: #f87171;
+    --radius: 1.5rem;
+    --shadow: 0 30px 70px rgba(15, 23, 42, 0.95);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    background:
+        radial-gradient(circle at top left, #1e293b, transparent 55%),
+        radial-gradient(circle at bottom right, #020617, #000);
+    color: var(--text-main);
+}
+
+/* Weather Card */
+.weather-card {
+    width: 100%;
+    max-width: 360px;
+    background: linear-gradient(135deg,
+            rgba(148, 163, 184, 0.12),
+            rgba(15, 23, 42, 0.95));
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    padding: 1.6rem 1.5rem 1.8rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    animation: fadeUp 0.6s ease;
+}
+
+/* Animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#city {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+}
+
+#icon {
+    width: 96px;
+    height: 96px;
+    margin: 0.4rem auto;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.7));
+}
+
+/* Weather Temperature */
+.temp {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0.2rem 0;
+    color: var(--text-main);
+}
+
+/* Weather Condition */
+.condition {
+    font-size: 0.95rem;
+    text-transform: capitalize;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+}
+
+/* Weather Details */
+.details {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+    border-radius: 1rem;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.details span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-weight: 500;
+}
+
+.details span::before {
+    content: attr(data-label);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(148, 163, 184, 0.8);
+}
+
+#humidity::before {
+    content: "Humidity";
+}
+
+#wind::before {
+    content: "Wind";
+}
+
+/* Error */
+.error {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--danger);
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+    .weather-card {
+        padding: 1.4rem 1.2rem 1.6rem;
+    }
+
+    .temp {
+        font-size: 2.6rem;
+    }
+}
