@@ -8,7 +8,7 @@ function createTask(text) {
   task.draggable = true;
   task.innerHTML = `
             <span class="text">${text}</span>
-            <span class="delete">X</span>
+            <i class="fa-solid fa-trash delete" title="Delete"></i>
             `;
   task.addEventListener("dragstart", () => {
     task.classList.add("dragging");
