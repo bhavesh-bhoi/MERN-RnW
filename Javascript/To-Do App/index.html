@@ -3,29 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do App</title>
+    <title>To-Do Board</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>Drag & Drop</h2>
+    <h2>TaskList Board</h2>
+
     <div class="controls">
-      <input type="text" name="" id="taskInput" placeholder="Enter new tasks" />
+      <input type="text" id="taskInput" placeholder="Add a new task..." />
       <button id="addTask">Add Task</button>
     </div>
+
     <div class="board">
       <div class="column" data-status="todo">
-        <h3>TODO</h3>
+        <h3>Todo</h3>
         <div class="task-list"></div>
       </div>
+
       <div class="column" data-status="doing">
         <h3>Doing</h3>
         <div class="task-list"></div>
       </div>
+
       <div class="column" data-status="done">
         <h3>Done</h3>
         <div class="task-list"></div>
       </div>
     </div>
+
+    <script src="app.js"></script>
   </body>
-  <script src="app.js"></script>
 </html>

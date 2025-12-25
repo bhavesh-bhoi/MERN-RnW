@@ -26,7 +26,7 @@ addBtn.addEventListener("click", () => {
     return;
   }
   const task = createTask(value);
-  document.querySelector('[data-status="todo"]').appendChild(task);
+  document.querySelector('[data-status="todo"] .task-list').appendChild(task);
   input.value = "";
   saveToLocal();
 });
