@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Drag & Drop</h2>
+    <div class="controls">
+      <input type="text" name="" id="taskInput" placeholder="Enter new tasks" />
+      <button id="addTask">Add Task</button>
+    </div>
+    <div class="board">
+      <div class="column" data-status="todo">
+        <h3>TODO</h3>
+        <div class="task-list"></div>
+      </div>
+      <div class="column" data-status="doing">
+        <h3>Doing</h3>
+        <div class="task-list"></div>
+      </div>
+      <div class="column" data-status="done">
+        <h3>Done</h3>
+        <div class="task-list"></div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
