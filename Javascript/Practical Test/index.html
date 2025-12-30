@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Task Management System</h1>
+
+      <!-- Task Form -->
+      <form id="taskForm">
+        <input type="hidden" id="taskId" />
+
+        <input type="text" id="title" placeholder="Task Title" required />
+        <textarea id="description" placeholder="Task Description"></textarea>
+        <input type="date" id="dueDate" title="Due Date" required />
+
+        <select id="priority" title="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <button type="submit">Save Task</button>
+      </form>
+
+      <!-- Filters -->
+      <div class="filters">
+        <select id="priorityFilter" title="priorityFilter">
+          <option value="all">All Priorities</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <input type="text" id="search" placeholder="Search tasks..." />
+      </div>
+
+      <!-- Task List -->
+      <div id="taskList"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
