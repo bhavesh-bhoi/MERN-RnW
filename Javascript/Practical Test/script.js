@@ -22,7 +22,7 @@ function addTask(e) {
 
   const id = document.getElementById("taskId").value;
   const title = document.getElementById("title").value.trim();
-  const description = document.getElementById("description").value;
+  const description = document.getElementById("description").value.trim();
   const dueDate = document.getElementById("dueDate").value;
   const priority = document.getElementById("priority").value;
 
@@ -31,9 +31,10 @@ function addTask(e) {
     return;
   }
 
-  // Update existing or add new
   if (id) {
     const task = tasks.find((t) => t.id === id);
+    if (!task) return;
+
     task.title = title;
     task.description = description;
     task.dueDate = dueDate;
@@ -61,34 +62,45 @@ function displayTasks() {
 
   taskList.innerHTML = "";
 
-  // Display filtered and searched
-  tasks
+  const filteredTasks = tasks
     .filter((task) => filter === "all" || task.priority === filter)
-    .filter((task) => task.title.toLowerCase().includes(searchText))
-    .forEach((task) => {
-      const div = document.createElement("div");
-      div.className = `task ${task.priority}`;
+    .filter((task) =>
+      (task.title + task.description).toLowerCase().includes(searchText)
+    );
 
-      div.innerHTML = `
-          <h3>${task.title}</h3>
-          <p>${task.description || "No description"}</p>
-          <p><strong>Due:</strong> ${task.dueDate}</p>
-          <p><strong>Priority:</strong> ${task.priority}</p>
-          <div class="task-actions">
-            <button onclick="editTask('${task.id}')">Edit</button>
-            <button class="delete delete-btn" onclick="deleteTask('${
-              task.id
-            }')">Delete</button>
-          </div>
-        `;
+  if (!filteredTasks.length) {
+    taskList.innerHTML = `<p style="opacity:.6">No tasks found.</p>`;
+    return;
+  }
 
-      taskList.appendChild(div);
-    });
+  filteredTasks.forEach((task) => {
+    const div = document.createElement("div");
+    div.className = `task ${task.priority}`;
+
+    div.innerHTML = `
+      <h3>${task.title}</h3>
+      <p>${task.description || "No description"}</p>
+      <p><strong>Due:</strong> ${new Date(
+        task.dueDate
+      ).toLocaleDateString()}</p>
+      <p><strong>Priority:</strong> ${task.priority}</p>
+      <div class="task-actions">
+        <button onclick="editTask('${task.id}')">Edit</button>
+        <button class="delete-btn" onclick="deleteTask('${
+          task.id
+        }')">Delete</button>
+      </div>
+    `;
+
+    taskList.appendChild(div);
+  });
 }
 
 // Edit Task
 function editTask(id) {
   const task = tasks.find((t) => t.id === id);
+  if (!task) return;
+
   document.getElementById("taskId").value = task.id;
   document.getElementById("title").value = task.title;
   document.getElementById("description").value = task.description;
@@ -98,9 +110,7 @@ function editTask(id) {
 
 // Delete Task
 function deleteTask(id) {
-  const confirmed = confirm("Are you sure you want to delete this task?");
-
-  if (!confirmed) return;
+  if (!confirm("Are you sure you want to delete this task?")) return;
 
   tasks = tasks.filter((task) => task.id !== id);
   saveTasks();

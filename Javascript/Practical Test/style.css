@@ -143,15 +143,15 @@ button:hover {
 
 /* Priority styles */
 .task.low {
-  background: 4px solid var(--low);
+  border-left: 4px solid var(--low);
 }
 
 .task.medium {
-  background: 4px solid var(--medium);
+  border-left: 4px solid var(--medium);
 }
 
 .task.high {
-  background: 4px solid var(--high);
+  border-left: 4px solid var(--high);
 }
 
 .task h3 {
