@@ -98,6 +98,10 @@ function editTask(id) {
 
 // Delete Task
 function deleteTask(id) {
+  const confirmed = confirm("Are you sure you want to delete this task?");
+
+  if (!confirmed) return;
+
   tasks = tasks.filter((task) => task.id !== id);
   saveTasks();
   displayTasks();
