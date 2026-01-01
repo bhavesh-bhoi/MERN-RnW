@@ -4,7 +4,7 @@ let newNum = num++;          //  newNum = 5, num = 6 - stores the current value 
 newNum = ++num;          // newNum = 7, num = 7 - increments num by 1, then stores the new value of num in newNum
 
 // 2) Find Errors in following code
-let 1age = 16; // Error: Variable names cannot start with a digit
+// let 1age = 16; // Error: Variable names cannot start with a digit
 
 let marks = 45;
 let isMarks = True; // Error: 'True' should be 'true' (lowercase)
