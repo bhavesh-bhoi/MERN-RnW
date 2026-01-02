@@ -25,3 +25,14 @@ nm[0]; // 'B' - Accesses the first character of the string
 
 let nme = "Bhavesh";
 nme[nme.length - 1]; // 'h' - Accesses the last character of the string
+
+// 6) what is the output of the following code
+
+// "Bhavesh"+07
+
+// 7) what are the lengths empty string & string with space
+
+// let emptyString = "";
+// let stringWithSpace = " ";
+// console.log(emptyString.length); // 0
+// console.log(stringWithSpace.length); // 1
