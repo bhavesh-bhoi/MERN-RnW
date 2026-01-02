@@ -10,3 +10,18 @@ let marks = 45;
 let isMarks = True; // Error: 'True' should be 'true' (lowercase)
 
 let isPass = 'true'; // Error: Boolean values should not be in quotes
+
+// 3) Find length of the string
+// let name = "Bhavesh Bhoi";
+// let len =  name.length;
+// console.log(len);
+
+// 4) Find the first letter of the string
+
+let nm = "Bhavesh";
+nm[0]; // 'B' - Accesses the first character of the string
+
+// 5) Find the last letter of the string
+
+let nme = "Bhavesh";
+nme[nme.length - 1]; // 'h' - Accesses the last character of the string
