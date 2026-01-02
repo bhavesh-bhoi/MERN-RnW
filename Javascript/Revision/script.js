@@ -37,3 +37,11 @@ let stringWithSpace = " ";
 console.log(emptyString.length); // 0
 console.log(stringWithSpace.length); // 1
 
+// 8) Write a javascript program to find whether the string is good or not
+
+let str = "apple";
+if((str[0] === 'a') && (str.length >= 3)){
+    console.log("Good String");
+} else {
+    console.log("Bad String");
+}
