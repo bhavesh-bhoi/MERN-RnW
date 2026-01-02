@@ -45,3 +45,8 @@ if((str[0] === 'a') && (str.length >= 3)){
 } else {
     console.log("Bad String");
 }
+
+// METHOD CHAINING
+let result = "  Javascript Revision  "
+let newResult = result.trim().toUpperCase();
+console.log(newResult); // "HELLO WORLD"
