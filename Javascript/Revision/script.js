@@ -63,3 +63,10 @@ cars.push("Tata"); // Adds at the end
 cars.pop(); // Removes from the end
 cars.shift(); // Removes from the beginning
 cars.unshift("Aston Martin"); // Adds at the beginning
+
+let start = ['january', 'july', 'march', 'august'];
+start.shift();
+start.shift();
+start.unshift('june');
+start.unshift('july');
+console.log(start); // ['july', 'june', 'march', 'august']
