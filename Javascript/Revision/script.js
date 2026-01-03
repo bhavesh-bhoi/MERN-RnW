@@ -13,7 +13,7 @@ let isPass = "true"; // Error: Boolean values should not be in quotes
 
 // 3) Find length of the string
 let name = "Bhavesh Bhoi";
-let len =  name.length;
+let len = name.length;
 console.log(len);
 
 // 4) Find the first letter of the string
@@ -40,14 +40,14 @@ console.log(stringWithSpace.length); // 1
 // 8) Write a javascript program to find whether the string is good or not
 
 let str = "apple";
-if((str[0] === 'a') && (str.length >= 3)){
-    console.log("Good String");
+if (str[0] === "a" && str.length >= 3) {
+  console.log("Good String");
 } else {
-    console.log("Bad String");
+  console.log("Bad String");
 }
 
 // METHOD CHAINING
-let result = "  Javascript Revision  "
+let result = "  Javascript Revision  ";
 let newResult = result.trim().toUpperCase();
 console.log(newResult); // "HELLO WORLD"
 
@@ -64,20 +64,27 @@ cars.pop(); // Removes from the end
 cars.shift(); // Removes from the beginning
 cars.unshift("Aston Martin"); // Adds at the beginning
 
-let start = ['january', 'july', 'march', 'august'];
+let start = ["january", "july", "march", "august"];
 start.shift();
 start.shift();
-start.unshift('june');
-start.unshift('july');
+start.unshift("june");
+start.unshift("july");
 // console.log(start); // ['july', 'june', 'march', 'august']
 
 let colors = ["red", "green", "blue", "yellow"];
 
 // returns index of value if found else -1
-colors.indexOf("red") // 0
-colors.indexOf("purple") // -1
+colors.indexOf("red"); // 0
+colors.indexOf("purple"); // -1
 // returns true if value found else false
-colors.includes("green") // true
-colors.includes("black") // false
+colors.includes("green"); // true
+colors.includes("black"); // false
 
 colors.reverse(); // Reverses the array[it will change origional array]
+
+colors.sort(); // Sorts the array in ascending order[it will change origional array]
+
+// let newColors = colors.slice(); // returns a shallow copy of array[it will not change origional array]
+// let newColors = colors.slice(2); // returns new array from index 2 to end [it will not change origional array]
+// let newColors = colors.slice(1, 4); // returns new array from index 2 to 3 [it will not change origional array]
+let newColors = colors.slice(-2); // returns new array from last two elements [it will not change origional array]
