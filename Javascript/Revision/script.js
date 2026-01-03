@@ -70,3 +70,10 @@ start.shift();
 start.unshift('june');
 start.unshift('july');
 console.log(start); // ['july', 'june', 'march', 'august']
+
+let colors = ["red", "green", "blue", "yellow"];
+colors.indexOf("red") // 0
+colors.indexOf("purple") // -1
+
+colors.includes("green") // true
+colors.includes("black") // false
