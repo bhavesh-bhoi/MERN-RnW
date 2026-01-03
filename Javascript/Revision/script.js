@@ -69,11 +69,15 @@ start.shift();
 start.shift();
 start.unshift('june');
 start.unshift('july');
-console.log(start); // ['july', 'june', 'march', 'august']
+// console.log(start); // ['july', 'june', 'march', 'august']
 
 let colors = ["red", "green", "blue", "yellow"];
+
+// returns index of value if found else -1
 colors.indexOf("red") // 0
 colors.indexOf("purple") // -1
-
+// returns true if value found else false
 colors.includes("green") // true
 colors.includes("black") // false
+
+colors.reverse(); // Reverses the array[it will change origional array]
