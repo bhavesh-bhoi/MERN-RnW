@@ -50,3 +50,16 @@ if((str[0] === 'a') && (str.length >= 3)){
 let result = "  Javascript Revision  "
 let newResult = result.trim().toUpperCase();
 console.log(newResult); // "HELLO WORLD"
+
+// TEMPLATE LITERALS
+let firstName = "Bhavesh";
+let lastName = "Bhoi";
+let fullName = `${firstName} ${lastName}`;
+console.log(fullName); // "Bhavesh Bhoi"
+
+// ARRAYS
+let cars = ["Audi", "BMW", "Mercedes"];
+cars.push("Tata"); // Adds at the end
+cars.pop(); // Removes from the end
+cars.shift(); // Removes from the beginning
+cars.unshift("Aston Martin"); // Adds at the beginning
