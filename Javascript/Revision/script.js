@@ -72,6 +72,7 @@ start.unshift("july");
 // console.log(start); // ['july', 'june', 'march', 'august']
 
 let colors = ["red", "green", "blue", "yellow"];
+let length = colors.length; // returns length of array
 
 // returns index of value if found else -1
 colors.indexOf("red"); // 0
@@ -88,3 +89,14 @@ colors.sort(); // Sorts the array in ascending order[it will change origional ar
 // let newColors = colors.slice(2); // returns new array from index 2 to end [it will not change origional array]
 // let newColors = colors.slice(1, 4); // returns new array from index 2 to 3 [it will not change origional array]
 let newColors = colors.slice(-2); // returns new array from last two elements [it will not change origional array]
+
+let primaryColors = ["red", "blue", "yellow", "green", "purple"];
+let secondaryColors = ["orange", "violet", "indigo"];
+let allColors = primaryColors.concat(secondaryColors); // combines two arrays[it will not change origional array]
+
+// Splice - modifies the original array by removing or replacing existing elements and/or adding new elements in place.
+let fruits = ["apple", "banana", "cherry", "date", "elderberry"];
+let removedFruits = fruits.splice(2); // removes elements from index 2 to end [it will change origional array]
+
+fruits.splice(0, 2); // removes 2 elements from index 0 [it will change origional array]
+fruits.splice(1, 1, "blueberry", "cantaloupe"); // removes 1 element from index 1 and adds two new elements [it will change origional array]
