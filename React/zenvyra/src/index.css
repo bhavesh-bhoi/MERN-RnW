@@ -2,9 +2,43 @@
 
 @theme {
     --font-pacifico: "Pacifico", cursive;
+    --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer base {
+    body {
+        font-family: var(--font-sans);
+    }
 }
 
 @layer components {
+
+    /* Navbar Styles */
+    .logo-effect {
+        @apply font-pacifico text-3xl text-amber-400 tracking-wide transition-all duration-300;
+    }
+
+    .logo-effect:hover {
+        @apply tracking-widest text-amber-300;
+    }
+
+    /* Navigation link styles - Underline Effect */
+    .nav-link {
+        @apply relative text-white transition-all duration-300 ease-in-out;
+    }
+
+    .nav-link::after {
+        content: "";
+        @apply absolute left-0 -bottom-1 w-0 h-0.5 bg-amber-400 transition-all duration-300 ease-in-out;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link:hover {
+        @apply text-amber-200;
+    }
 
     /* Login button – inverted effect */
     .btn-login {

@@ -1,39 +1,44 @@
 function Navbar() {
   return (
-    <div className="w-full p-6 bg-black text-white flex items-center justify-between">
-      <div className="text-4xl font-bold">
-        <h1 className="hero-title">Zenvyra</h1>
+    <nav className="w-full p-6 bg-black text-white flex items-center justify-between">
+      {/* Logo */}
+      <div className="cursor-pointer">
+        <h1 className="logo-effect">Zenvyra</h1>
       </div>
-      <div className="text-lg items-center">
+
+      {/* Nav Links */}
+      <div className="hidden md:flex space-x-4">
         <ul className="flex space-x-6">
           <li>
-            <a href="#" className="hover:text-amber-200">
+            <a href="#" className="nav-link">
               Home
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-amber-200">
+            <a href="#" className="nav-link">
               About
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-amber-200">
+            <a href="#" className="nav-link">
               Pricing
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-amber-200">
+            <a href="#" className="nav-link">
               FAQs
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-amber-200">
+            <a href="#" className="nav-link">
               Contact
             </a>
           </li>
         </ul>
       </div>
-      <div className="space-x-4">
+
+      {/* Buttons */}
+      <div className="hidden md:flex space-x-4">
         <button className="btn-login">
           <span>Login</span>
         </button>
@@ -42,7 +47,7 @@ function Navbar() {
           <span>Get Started</span>
         </button>
       </div>
-    </div>
+    </nav>
   );
 }
 
