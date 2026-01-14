@@ -13,7 +13,7 @@ import {
 
 function Navbar() {
   return (
-    <div className="bg-black text-white p-4 max-w-xs h-screen items-center flex flex-col gap-8 select-none">
+    <div className="bg-black text-white p-4 max-w-sm h-screen items-center fixed flex flex-col gap-8 left-0 top-0 select-none">
       {/* Profile Picture Container */}
       <div className="h-48 w-48 rounded-full bg-gray-600/25 mt-4">
         <img
