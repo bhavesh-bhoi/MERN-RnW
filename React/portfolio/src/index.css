@@ -1,5 +1,0 @@
-@layer components {
-    .nav-links {
-        @apply flex items-center gap-4 text-lg font-medium text-gray-300 hover:text-blue-500 transition-colors duration-200 cursor-pointer;
-    }
-}
