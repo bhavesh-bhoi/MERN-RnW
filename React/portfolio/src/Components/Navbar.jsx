@@ -13,7 +13,7 @@ import {
 
 function Navbar() {
   return (
-    <div className="bg-black text-white p-4 max-w-sm h-screen items-center fixed flex flex-col gap-8 left-0 top-0 select-none">
+    <div className="bg-black text-white p-4 min-w-auto h-screen items-center fixed flex flex-col gap-8 left-0 top-0 select-none">
       {/* Profile Picture Container */}
       <div className="h-48 w-48 rounded-full bg-gray-600/25 mt-4">
         <img
@@ -28,7 +28,7 @@ function Navbar() {
       {/* Social Media Links */}
       <div className="flex gap-4 text-2xl text-gray-400">
         <a
-          className="hover:text-white transition duration-300 hover:bg-gray-800 rounded-full p-2"
+          className="hover:text-white transition duration-300 hover:bg-blue-400 rounded-full p-2"
           href="https://www.linkedin.com/in/bhavesh-bhoi-701842250"
           target="_blank"
           rel="noreferrer"
@@ -36,7 +36,7 @@ function Navbar() {
           <FaLinkedin />
         </a>
         <a
-          className="hover:text-white transition duration-300 hover:bg-gray-800 rounded-full p-2"
+          className="hover:text-white transition duration-300 hover:bg-blue-400 rounded-full p-2"
           href="https://github.com/Bhavu7"
           target="_blank"
           rel="noreferrer"
@@ -44,7 +44,7 @@ function Navbar() {
           <FaGithub />
         </a>
         <a
-          className="hover:text-white transition duration-300 hover:bg-gray-800 rounded-full p-2"
+          className="hover:text-white transition duration-300 hover:bg-blue-400 rounded-full p-2"
           href="https://www.instagram.com/bhaveshbhoi.web/"
           target="_blank"
           rel="noreferrer"
@@ -52,7 +52,7 @@ function Navbar() {
           <FaInstagram />
         </a>
         <a
-          className="hover:text-white transition duration-300 hover:bg-gray-800 rounded-full p-2"
+          className="hover:text-white transition duration-300 hover:bg-blue-400 rounded-full p-2"
           href="https://discord.com/channels/@me"
           target="_blank"
           rel="noreferrer"
@@ -60,7 +60,7 @@ function Navbar() {
           <FaDiscord />
         </a>
         <a
-          className="hover:text-white transition duration-300 hover:bg-gray-800 rounded-full p-2"
+          className="hover:text-white transition duration-300 hover:bg-blue-400 rounded-full p-2"
           href="https://x.com/BhaveshBhoi07"
           target="_blank"
           rel="noreferrer"
@@ -74,7 +74,7 @@ function Navbar() {
           <li>
             <a
               href="#home"
-              className="flex items-center gap-5 hover:text-white transition duration-300"
+              className="flex items-center gap-5 hover:text-blue-400 transition duration-300"
             >
               <FaHome className="text-lg" />
               <span>Home</span>
@@ -83,7 +83,7 @@ function Navbar() {
           <li>
             <a
               href="#about"
-              className="flex items-center gap-5 hover:text-white transition duration-300"
+              className="flex items-center gap-5 hover:text-blue-400 transition duration-300"
             >
               <FaUser className="text-lg" />
               <span>About</span>
@@ -92,7 +92,7 @@ function Navbar() {
           <li>
             <a
               href="#resume"
-              className="flex items-center gap-5 hover:text-white transition duration-300"
+              className="flex items-center gap-5 hover:text-blue-400 transition duration-300"
             >
               <FaFileAlt className="text-lg" />
               <span>Resume</span>
@@ -101,7 +101,7 @@ function Navbar() {
           <li>
             <a
               href="#services"
-              className="flex items-center gap-5 hover:text-white transition duration-300"
+              className="flex items-center gap-5 hover:text-blue-400 transition duration-300"
             >
               <FaServicestack className="text-lg" />
               <span>Services</span>
@@ -110,7 +110,7 @@ function Navbar() {
           <li>
             <a
               href="#contact"
-              className="flex items-center gap-5 hover:text-white transition duration-300"
+              className="flex items-center gap-5 hover:text-blue-400 transition duration-300"
             >
               <FaEnvelope className="text-lg" />
               <span>Contact</span>
