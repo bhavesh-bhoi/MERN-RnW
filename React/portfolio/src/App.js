@@ -9,7 +9,7 @@ import Contact from "./Pages/Contact";
 
 function App() {
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen overflow-y-scroll">
       <BrowserRouter>
         <Navbar />
         <Routes>
