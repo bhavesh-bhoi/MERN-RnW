@@ -14,11 +14,11 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="bg-black text-white p-4 w-74 h-screen items-center fixed flex flex-col gap-8 left-0 top-0 select-none">
+    <div className="bg-black text-white p-4 w-74 h-screen items-center fixed flex flex-col gap-5 left-0 top-0 select-none">
       {/* Profile Picture Container */}
-      <div className="h-48 w-48 rounded-full bg-gray-600/25 mt-4">
+      <div className="h-32 w-32 rounded-full bg-gray-600/25 mt-0">
         <img
-          className="rounded-full h-48 w-48 object-cover p-3 select-none"
+          className="rounded-full h-32 w-32 object-cover p-2 select-none"
           draggable="false"
           src="/assets/images/profile.avif"
           alt="Profile"
@@ -71,7 +71,7 @@ function Navbar() {
       </div>
       {/* Navigation Links */}
       <div className="p-3 text-gray-400 w-full">
-        <ul className="flex flex-col gap-6 text-lg font-small items-start">
+        <ul className="flex flex-col gap-8 text-lg font-small items-start">
           <li>
             <Link
               to="/"
@@ -110,6 +110,15 @@ function Navbar() {
           </li>
           <li>
             <Link
+              to="/dropdown"
+              className="flex items-center gap-5 hover:text-blue-400 transition duration-300"
+            >
+              <FaServicestack className="text-lg" />
+              <span>Dropdown</span>
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/contact"
               className="flex items-center gap-5 hover:text-blue-400 transition duration-300"
             >
@@ -119,7 +128,7 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <div className="mt-auto mb-5">
+      {/* <div className="mt-auto mb-5">
         <p className="text-sm text-gray-400">
           © 2026{" "}
           <Link
@@ -132,7 +141,7 @@ function Navbar() {
           </Link>
           . All rights reserved.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
