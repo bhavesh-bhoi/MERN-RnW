@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 
 function About() {
   return (
-    <div className="flex-1 ml-73.75 h-screen bg-black select-none p-4">
+    <div className="flex-1 ml-73.75 h-screen bg-black/95 select-none p-4">
       <div className="p-5">
         <h1 className="text-white font-bold text-3xl pt-10">About</h1>
         <hr className="bg-blue-300 w-22 pt-1 mt-1 rounded-full" />
