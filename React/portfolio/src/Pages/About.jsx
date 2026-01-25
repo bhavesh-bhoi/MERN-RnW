@@ -8,7 +8,7 @@ import {
 
 function About() {
   return (
-    <div className="flex-1 ml-[296px] h-screen overflow-y-auto overflow-x-hidden bg-black/95 select-none p-4">
+    <div className="flex-1 ml-[296px] h-screen overflow-y-auto overflow-x-hidden scrollbar-hide bg-black/95 select-none p-4">
       <div className="p-5">
         <h1 className="text-white font-bold text-3xl pt-5">About</h1>
         <hr className="bg-blue-300 w-22 pt-1 mt-1 rounded-full" />
@@ -147,7 +147,7 @@ function About() {
           consectetur velit
         </p>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 mt-5">
           <div className="p-2 pl-0">
             <div className="flex justify-between items-center mb-2">
               <h1 className="text-white font-semibold">HTML</h1>
