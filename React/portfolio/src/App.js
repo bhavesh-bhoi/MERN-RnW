@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Layout from "./Layouts/Layout";
 import Navbar from "./Components/Navbar";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
@@ -12,7 +13,7 @@ function App() {
     <div className="flex min-h-screen overflow-y-scroll">
       <BrowserRouter>
         <Navbar />
-        <Routes>
+        <Routes element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
