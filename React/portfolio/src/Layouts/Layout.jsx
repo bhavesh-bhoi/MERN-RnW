@@ -6,7 +6,7 @@ function Layout() {
     <div className="flex h-screen overflow-hidden bg-black">
       <Navbar />
 
-      <div className="flex-1 ml-[296px] overflow-y-auto overflow-x-hidden scrollbar-hide">
+      <div className="flex-1 ml-[296px]  overflow-y-auto overflow-x-hidden scrollbar-hide">
         <Outlet />
       </div>
     </div>
