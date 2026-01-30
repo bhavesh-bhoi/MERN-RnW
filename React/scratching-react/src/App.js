@@ -5,7 +5,7 @@ import NotesManager from "./Components/NotesManager";
 function App() {
   return (
     <div className="App">
-      <Counter />
+      {/* <Counter /> */}
       <NotesManager />
     </div>
   );
