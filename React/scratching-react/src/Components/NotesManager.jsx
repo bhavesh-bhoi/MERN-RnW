@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
 
 function NotesManager() {
-  // State to hold the list of tasks
-  const [tasks, setTasks] = useState([]);
+  // State to hold tasks, retrived from localStorage
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
 
   // Function to add a new task
   function addTask(task) {
@@ -23,6 +26,11 @@ function NotesManager() {
 
     setTasks(updatedTasks);
   }
+
+  // Save tasks to localstorage using useEffect
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div className="bg-black min-h-screen py-10">
