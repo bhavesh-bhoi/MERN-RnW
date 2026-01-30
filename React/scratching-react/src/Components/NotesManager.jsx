@@ -25,7 +25,7 @@ function NotesManager() {
   }
 
   return (
-    <div className="bg-gray-900 min-h-screen py-10">
+    <div className="bg-black min-h-screen py-10">
       <h1 className="text-center text-white font-bold text-4xl mb-10">
         Notes Manager
       </h1>

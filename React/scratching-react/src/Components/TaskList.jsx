@@ -1,16 +1,16 @@
 function TaskList({ tasks, deleteTask }) {
   return (
-    <div className="max-w-5xl mx-auto bg-gray-200 p-6 rounded-xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    // <div className="max-w-5xl mx-auto bg-gray-200 p-6 rounded-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-50 py-6">
         {/* Task items */}
         {tasks.map((task, index) => {
           return (
             <div
               key={index}
-              className="bg-white p-4 rounded-lg shadow-sm flex justify-between items-center"
+              className="bg-gray-800 p-4 rounded-3xl shadow-sm flex justify-between items-center text-wrap"
             >
               {/* Task content */}
-              <p className="text-gray-700 mr-4">{task}</p>
+              <p className="text-gray-100 mr-4 text-wrap">{task}</p>
               {/* Delete button */}
               <button
                 onClick={() => deleteTask(index)}
@@ -22,7 +22,7 @@ function TaskList({ tasks, deleteTask }) {
           );
         })}
       </div>
-    </div>
+    // </div>
   );
 }
 

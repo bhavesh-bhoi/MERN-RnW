@@ -19,13 +19,13 @@ function Counter() {
   }
 
   return (
-    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center text-white">
+    <div className="bg-black min-h-screen flex flex-col items-center justify-center text-white">
       <h1 className="font-bold text-4xl mb-8">Counter App</h1>
 
-      <div className="flex items-center gap-6 bg-gray-800 p-8 rounded-xl shadow-lg">
+      <div className="flex items-center gap-6 bg-gray-800 px-8 py-6 rounded-full shadow-lg">
         <button
           onClick={countDecrement}
-          className="w-14 h-14 flex items-center cursor-pointer justify-center text-2xl font-bold bg-gray-200 text-black rounded-full hover:bg-gray-400"
+          className="w-14 h-14 flex items-center cursor-pointer justify-center text-4xl font-bold bg-gray-200 text-black rounded-full hover:bg-gray-400"
         >
           -
         </button>
@@ -34,7 +34,7 @@ function Counter() {
 
         <button
           onClick={countIncrement}
-          className="w-14 h-14 flex items-center cursor-pointer justify-center text-2xl font-bold bg-gray-200 text-black rounded-full hover:bg-gray-400"
+          className="w-14 h-14 flex items-center cursor-pointer justify-center text-4xl font-bold bg-gray-200 text-black rounded-full hover:bg-gray-400"
         >
           +
         </button>
