@@ -3,6 +3,7 @@ import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
 
 function NotesManager() {
+  
   // State to hold tasks, retrived from localStorage
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
