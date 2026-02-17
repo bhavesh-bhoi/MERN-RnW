@@ -1,6 +1,37 @@
-const Table = ({ data, onEdit, onDelete }) => {
+const Table = ({
+  data,
+  onEdit,
+  onDelete,
+  handleSortAZ,
+  handleSortZA,
+  handleSearch,
+}) => {
   return (
-    <div className="flex items-center justify-center w-[80%]">
+    <div className="w-[80%] flex flex-col items-center justify-center">
+      <div className="flex items-center justify-center gap-4 p-4 mb-4">
+        <div className="flex items-center justify-center gap-2">
+          <button
+            className="p-2 rounded-md cursor-pointer bg-gray-200 hover:bg-gray-300 transition-colors border-none"
+            onClick={handleSortAZ}
+          >
+            A-Z
+          </button>
+          <button
+            className="p-2 rounded-md cursor-pointer bg-gray-200 hover:bg-gray-300 transition-colors border-none"
+            onClick={handleSortZA}
+          >
+            Z-A
+          </button>
+        </div>
+        <div className="flex items-center justify-center gap-2">
+          <input
+            type="text"
+            placeholder="Search"
+            className="border border-gray-400 p-2 rounded-md text-md"
+            onChange={handleSearch}
+          />
+        </div>
+      </div>
       {/* Table */}
       <table className="w-full border-collapse border border-gray-400">
         <thead className="bg-gray-200">

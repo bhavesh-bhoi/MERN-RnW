@@ -8,6 +8,9 @@ const DataTable = () => {
     return saved ? JSON.parse(saved) : [];
   });
 
+  // Search and Sort
+  const [search, setSearch] = useState("");
+
   // Input Fields
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -78,6 +81,47 @@ const DataTable = () => {
     }
   };
 
+  // Search
+  const filteredData = data.filter(
+    (item) =>
+      item.name.toLowerCase().includes(search.toLowerCase()) ||
+      item.email.toLowerCase().includes(search.toLowerCase()) ||
+      item.phone.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  const handleSortAZ = () => {
+    const sorted = [...data].sort((a, b) => {
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+
+    setData(sorted);
+  };
+
+  const handleSortZA = () => {
+    const sorted = [...data].sort((a, b) => {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return 1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+
+    setData(sorted);
+  };
+
+  // Search
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center p-10 select-none">
       <h1 className="text-2xl font-bold my-4 uppercase">DataTable</h1>
@@ -135,7 +179,14 @@ const DataTable = () => {
           </button>
         </form>
       </div>
-      <Table data={data} onEdit={handleEdit} onDelete={handleDelete} />
+      <Table
+        data={filteredData}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        handleSortAZ={handleSortAZ}
+        handleSortZA={handleSortZA}
+        handleSearch={handleSearch}
+      />
     </div>
   );
 };
