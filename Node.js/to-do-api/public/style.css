@@ -1,0 +1,272 @@
+:root {
+    --bg: #050816;
+    --card-bg: rgba(15, 23, 42, 0.85);
+    --card-border: rgba(148, 163, 184, 0.3);
+    --accent: #38bdf8;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+    --radius-xl: 1.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    overflow: hidden;
+    place-items: center;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at center, #1e293b, transparent 60%),
+        radial-gradient(circle at center, #0f172a, #020617);
+    color: var(--text-main);
+}
+
+/* Container */
+.todo-wrapper {
+    width: 100%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    position: relative;
+    border-radius: 1.75rem;
+    clip-path: inset(0 round 1.75rem);
+    background: linear-gradient(135deg,
+            rgba(148, 163, 184, 0.12),
+            rgba(15, 23, 42, 0.96));
+    border-radius: 1.75rem;
+    border: 1px solid var(--card-border);
+    padding: 0;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(20px);
+}
+
+.todo-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.6);
+    border-bottom: 1px solid var(--card-border);
+    padding: 1.2rem 1.5rem 0.5rem;
+}
+
+/* Header */
+h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Input */
+.input-group {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    z-index: 10;
+}
+
+#todoInput {
+    flex: 1;
+    padding: 0.7rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: rgba(15, 23, 42, 0.6);
+    color: var(--text-main);
+    outline: none;
+}
+
+#todoInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+}
+
+#todoInput::placeholder {
+    color: var(--text-muted);
+}
+
+/* Add Button */
+#addBtn {
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    border: none;
+    background: var(--accent);
+    color: #020617;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#addBtn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+#addBtn:active {
+    transform: scale(0.95);
+}
+
+/* List */
+#todoList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    padding: 0 1.5rem 1.5rem;
+}
+
+/* Item */
+#todoList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.25s ease;
+}
+
+#todoList li:hover {
+    transform: translateY(-2px);
+}
+
+/* Text */
+#todoList li span {
+    flex: 1;
+    font-size: 0.9rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Actions */
+.todo-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+/* Buttons */
+.todo-actions button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    background: rgba(15, 23, 42, 0.6);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.todo-actions button:hover {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.todo-actions button:active {
+    transform: scale(0.9);
+}
+
+/* Edit */
+.todo-actions button:first-child:hover {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.15);
+}
+
+/* Delete */
+.todo-actions button:last-child:hover {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.15);
+}
+
+/* Actions container */
+.todo-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Base button */
+.todo-actions button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    background: rgba(15, 23, 42, 0.6);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.todo-actions button:hover {
+    transform: translateY(-2px) scale(1.1);
+}
+
+/* Click */
+.todo-actions button:active {
+    transform: scale(0.9);
+}
+
+/* Edit */
+.edit-btn:hover {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.4);
+}
+
+/* Delete */
+.delete-btn:hover {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.15);
+    border-color: rgba(248, 113, 113, 0.4);
+}
+
+/* Scrollbar */
+.todo-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.todo-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.todo-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.4);
+    border-radius: 10px;
+}
+
+.todo-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
