@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add User</title>
+  </head>
+  <body>
+    <h1>Add User</h1>
+
+    <form action="/add" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Name" required />
+      <br /><br />
+
+      <input type="email" name="email" placeholder="Email" required />
+      <br /><br />
+
+      <input type="text" name="contact" placeholder="Contact" required />
+      <br /><br />
+
+      <input type="file" name="image" />
+      <br /><br />
+
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>

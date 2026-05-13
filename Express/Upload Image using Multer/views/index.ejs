@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD App</title>
+</head>
+<body>
+
+    <h1>User List</h1>
+
+    <a href="/add">Add User</a>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Action</th>
+        </tr>
+
+        <% users.forEach(user => { %>
+            <tr>
+                <td>
+                    <% if(user.image){ %>
+                        <img src="/uploads/<%= user.image %>" width="80">
+                    <% } %>
+                </td>
+
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.contact %></td>
+
+                <td>
+                    <a href="/edit/<%= user._id %>">Edit</a>
+
+                    <form action="/delete/<%= user._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
+</body>
+</html>
