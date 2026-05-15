@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Store | Add Book</title>
+  </head>
+  <body>
+    <h2>Add Book</h2>
+
+    <form action="/add" method="POST" enctype="multipart/form-data">
+      <input type="text" name="bookname" placeholder="Book Name" />
+      <br /><br />
+
+      <input type="text" name="author" placeholder="Author Name" />
+      <br /><br />
+
+      <input type="number" name="price" placeholder="Price" />
+      <br /><br />
+
+      <input type="file" name="image" />
+      <br /><br />
+
+      <button type="submit">Add Book</button>
+    </form>
+  </body>
+</html>

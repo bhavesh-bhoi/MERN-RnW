@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Store</title>
+</head>
+<body>
+
+    <h1>Book Store</h1>
+
+    <a href="/add">Add Book</a>
+
+    <hr>
+
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;justify-content: center;">
+        <% books.forEach(book => { %>
+
+        <div style="border: 1px solid #ccc; padding: 10px;width: 300px; display: flex; flex-direction: column; gap: 20px; justify-content: space-between;">
+
+            <img src="/uploads/<%= book.image %>" width="250">
+
+            <div>
+                <h2><%= book.bookname %></h2>
+
+            <p>Author : <%= book.author %></p>
+
+            <p>Price : ₹<%= book.price %></p>
+            </div>
+
+            <div style="display: flex; gap: 15px;">
+                <a href="/edit/<%= book._id %>" style="color: blue;">Edit</a>
+
+            <form action="/delete/<%= book._id %>?_method=DELETE" method="POST">
+
+                <button style="color: red;">Delete</button>
+
+            </form>
+            </div>
+
+        </div>
+
+    <% }) %>
+    </div>
+
+</body>
+</html>

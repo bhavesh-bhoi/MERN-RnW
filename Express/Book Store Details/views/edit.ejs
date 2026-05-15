@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Store | Edit Book</title>
+  </head>
+  <body>
+    <h2>Edit Book</h2>
+
+    <form
+      action="/edit/<%= book._id %>?_method=PUT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="text" name="bookname" value="<%= book.bookname %>" />
+      <br /><br />
+
+      <input type="text" name="author" value="<%= book.author %>" />
+      <br /><br />
+
+      <input type="number" name="price" value="<%= book.price %>" />
+      <br /><br />
+
+      <img src="/uploads/<%= book.image %>" width="100" />
+
+      <br /><br />
+
+      <input type="file" name="image" />
+
+      <br /><br />
+
+      <button>Update Book</button>
+    </form>
+  </body>
+</html>
